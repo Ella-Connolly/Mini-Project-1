@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Baking Blog </title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header>
+            <h1> Baking Blog </h1>
+            <a href="/create"> Create New Post </a>
+        </header>
+        <main>
+        <h2> All Recipes </h2>
+        <% if (posts.length == 0) { %>
+            <p>No recipes yet. Be the first to post!</p>
+        <% } %>
+        <% posts.forEach(post => { %>
+            <li>
+                <h3><%= post.title %></h3>
+                <p><%= post.content %></p>
+                <small>By <%= post.author %> on <%= post.createdAt %></small><br>
+                <a href="/posts/<%= post.id %>/edit"> Edit </a>
+                <form action="posts/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+                </form>
+                </li>
+            <% }) %>
+        <h2> Create a new recipe! </h2>
+        <form action="/posts" method="POST">
+            <input name="title" placeholder="Recipe title" required>
+            <input name="author" placeholder="Your name" required>
+            <textarea name="conent" placeholder="Write your recipe here..." required></textarea>
+            <button type="submit">Post Recipe</button>
+        </form>
+    </main>
+    <footer>
+        <hr>
+        <p> &copy; <%= new Date().getFullYear() %> Baking Blog </p>
+    </footer>
+    </body>
+</html>

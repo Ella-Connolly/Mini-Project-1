@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Edit Baking Post </title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header>
+            <h1> Edit Baking Post</h1>
+         </header>
+         <main>
+            <form method="POST" action="/edit/<%= post.id %>">
+                <input name="title" value="<%= post.title %>" required><br>
+                <input name="author" value="<%= post.author %>" required><br>
+                <textarea name="content" required><%= post.content %></textarea><br>
+                <select name="category" required>
+                    <option <%= post.category === "Cake" ? "selected" : "" %> value="Cake">Cake</option>
+                    <option <%= post.category === "Cookies" ? "selected" : "" %> value="Cookies">Cookies</option>
+                    <option <%= post.category === "Bread" ? "selected" : "" %> value="Bread">Bread</option>
+                    <option <%= post.category === "Other" ? "selected" : "" %> value="Other">Other</option>
+                </select><br>
+                <button type="submit">Save Changes</button>
+            </form>
+            <a href="/">Back Home</a>
+            </main>
+             </main>
+    <footer>
+        <hr>
+        <p> &copy; <%= new Date().getFullYear() %> Baking Blog </p>
+    </footer>
+    </body>
+</html>
