@@ -22,7 +22,7 @@ app.get('/',
 //create form
 app.get('/create', 
     (req, res) => {
-        req.render('create');
+        res.render('create');
     });
 
 //add a new recipe/post
